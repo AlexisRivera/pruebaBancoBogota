@@ -1,2 +1,4 @@
 -1. inicio branch hotfix 
 -4. cambio en branch feature2
+-2. cambio en branch feature1
+-3. cambio 2 en branch feature1
