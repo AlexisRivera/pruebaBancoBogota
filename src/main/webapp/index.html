@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>Aplicaci&oacute;n Model</title>        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link href="./css/main.css" rel="stylesheet">
+
+        <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+        <script src="./js/lib/utils.js"></script>
+
+    </head>
+    <body>
+        <div class="content">
+            <div class="content-header">
+                <!-- imagen encabezado-->
+                <!-- menu-->
+                <nav class="navbar navbar-default" role="navigation">
+                    <!-- El logotipo y el icono que despliega el men� se agrupan
+                         para mostrarlos mejor en los dispositivos m�viles -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Desplegar navegaci�n</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Logotipo</a>
+                    </div>
+
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Parametrizar <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+									<li><a onclick="accionMenu('pagos.html#/')">pagos</a></li><li><a onclick="accionMenu('MedioPagos.html#/')">MedioPagos</a></li><li><a onclick="accionMenu('Estado.html#/')">Estado</a></li><li><a onclick="accionMenu('Targeta.html#/')">Targeta</a></li><li><a onclick="accionMenu('Miembro.html#/')">Miembro</a></li><li><a onclick="accionMenu('Inscrito.html#/')">Inscrito</a></li><li><a onclick="accionMenu('sexo.html#/')">sexo</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="content-body">
+                <iframe id="iframeContenido"></iframe>
+            </div>
+            <div class="content-footer"></div>
+        </div>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    </body>
+</html>
+

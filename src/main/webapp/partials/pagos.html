@@ -1,0 +1,150 @@
+<div class="btn-group">
+	<button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo pagos</button>
+	<button type="button" class="btn btn-default" ng-click="cancelar()">Listar pagos</button>
+</div>
+				
+<div class="panel panel-primary" ng-hide="panelEditar">
+    <div class="panel-heading">Parametrizaci&oacute;n de pagos</div>
+    <div class="panel-body">
+        <table class="resultados table table-striped">
+            <tr>
+                				<th>
+                                    idPago
+                                </th>				<th>
+                                    valor
+                                </th>				<th>
+                                    fechaDerecivo
+                                </th>				<th>
+                                    pagado
+                                </th>				<th>
+                                    pagado
+                                </th>				<th>
+                                    fechaPagado
+                                </th>
+								<th>
+				                    miembro
+				                </th>
+				<th>
+                    &nbsp;
+                </th>
+            </tr>
+            <tr ng-repeat="row in lista">
+                		<td class="row">{{row.idPago}}</td>
+                		<td class="row">{{row.valor}}</td>
+                		<td class="row">{{row.fechaDerecivo| date: 'dd/MM/yyyy'}}</td>
+                		<td class="row">{{row.pagado}}</td>
+                		<td class="row">{{row.pagado}}</td>
+                		<td class="row">{{row.fechaPagado| date: 'dd/MM/yyyy'}}</td>
+                
+					<td class="row">{{row.miembro.nombre}}</td>              
+				<td class="row">
+                    <button type="button" class="btn btn-default" ng-click="editar(row)">
+                        <span class="glyphicon glyphicon-pencil"></span>Editar
+                    </button>
+					<button type="button" class="btn btn-default" ng-click="eliminar(row)">
+                        <span class="glyphicon glyphicon-remove"></span>Eliminar
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <br/>
+    </div>
+</div>
+
+<div class="panel panel-primary" ng-show="panelEditar">
+    <div class="panel-heading">Parametrizaci&oacute;n de pagos</div>
+    <div class="panel-body">
+        <form role="form" id="formularioEditar">
+            				<div class="row">
+                                <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
+                                    <label for="idPago">idPago</label>
+                                    <input id="idPago" 
+                                           class="form-control" 
+            							   type="text"
+                                           ng-model="datosFormulario.idPago"
+            							   placeholder="idPago"/>
+                                    <div ng-show="errores.idPago">{{errores.idPago}}</div>
+                                </div>
+                            </div>				<div class="row">
+                                <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
+                                    <label for="valor">valor</label>
+                                    <input id="valor" 
+                                           class="form-control" 
+            							   type="text"
+                                           ng-model="datosFormulario.valor"
+            							   placeholder="valor"/>
+                                    <div ng-show="errores.valor">{{errores.valor}}</div>
+                                </div>
+                            </div>				<div class="row">
+                                <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
+                                    <label for="fechaDerecivo">fechaDerecivo</label>
+            						<div class="input-group">
+            	                        <input id="fechaDerecivo" 
+            	                               class="form-control datepicker" 
+            	                               type="text" 
+            	                               ng-model="datosFormulario.fechaDerecivo"/>
+            							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                	</div>
+                                    <script>
+                                                var dp_fechaDerecivo = $('#fechaDerecivo').datepicker({format: 'dd/mm/yyyy'}).on('changeDate', function (ev) {
+                                                    dp_fechaDerecivo.hide();
+                                                }).data('datepicker');
+                                    </script>
+                                    <div ng-show="errores.fechaDerecivo">{{errores.fechaDerecivo}}</div>
+                                </div>
+                            </div>				<div class="row">
+                                <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
+                                    <label for="pagado">pagado</label>
+            						<input id="pagado" 
+            							   type="check"
+                                           class="form-control" 
+                                           ng-model="datosFormulario.pagado"/>
+                                    <div ng-show="errores.pagado">{{errores.pagado}}</div>
+                                </div>
+                            </div>				<div class="row">
+                                <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
+                                    <label for="pagado">pagado</label>
+                                    <input id="pagado" 
+                                           class="form-control" 
+            							   type="text"
+                                           ng-model="datosFormulario.pagado"
+            							   placeholder="pagado"/>
+                                    <div ng-show="errores.pagado">{{errores.pagado}}</div>
+                                </div>
+                            </div>				<div class="row">
+                                <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
+                                    <label for="fechaPagado">fechaPagado</label>
+            						<div class="input-group">
+            	                        <input id="fechaPagado" 
+            	                               class="form-control datepicker" 
+            	                               type="text" 
+            	                               ng-model="datosFormulario.fechaPagado"/>
+            							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                	</div>
+                                    <script>
+                                                var dp_fechaPagado = $('#fechaPagado').datepicker({format: 'dd/mm/yyyy'}).on('changeDate', function (ev) {
+                                                    dp_fechaPagado.hide();
+                                                }).data('datepicker');
+                                    </script>
+                                    <div ng-show="errores.fechaPagado">{{errores.fechaPagado}}</div>
+                                </div>
+                            </div> 
+							<div class="row">
+			                    <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
+			                        <label>miembro</label>
+									<select id="miembro" class="form-control" 
+			                            ng-model="datosFormulario.miembro"
+			                            ng-options="option.nombre for option in listaMiembro track by option.id">
+			                    	</select>
+			                        <div ng-show="errores.miembro">{{errores.miembro}}</div>
+			                    </div>
+			                </div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default" ng-click="guardar()" ng-show="nuevoRegistro">Guardar</button>
+                <button type="button" class="btn btn-default" ng-click="guardar()" ng-show="!nuevoRegistro">Aceptar</button>
+                <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+

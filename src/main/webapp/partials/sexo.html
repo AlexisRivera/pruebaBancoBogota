@@ -1,0 +1,74 @@
+<div class="btn-group">
+	<button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo sexo</button>
+	<button type="button" class="btn btn-default" ng-click="cancelar()">Listar sexo</button>
+</div>
+				
+<div class="panel panel-primary" ng-hide="panelEditar">
+    <div class="panel-heading">Parametrizaci&oacute;n de sexo</div>
+    <div class="panel-body">
+        <table class="resultados table table-striped">
+            <tr>
+                				<th>
+                                    TipoSexo
+                                </th>				<th>
+                                    idTipo
+                                </th>
+				
+				<th>
+                    &nbsp;
+                </th>
+            </tr>
+            <tr ng-repeat="row in lista">
+                		<td class="row">{{row.TipoSexo}}</td>
+                		<td class="row">{{row.idTipo}}</td>
+                
+				
+				<td class="row">
+                    <button type="button" class="btn btn-default" ng-click="editar(row)">
+                        <span class="glyphicon glyphicon-pencil"></span>Editar
+                    </button>
+					<button type="button" class="btn btn-default" ng-click="eliminar(row)">
+                        <span class="glyphicon glyphicon-remove"></span>Eliminar
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <br/>
+    </div>
+</div>
+
+<div class="panel panel-primary" ng-show="panelEditar">
+    <div class="panel-heading">Parametrizaci&oacute;n de sexo</div>
+    <div class="panel-body">
+        <form role="form" id="formularioEditar">
+            				<div class="row">
+                                <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
+                                    <label for="TipoSexo">TipoSexo</label>
+                                    <input id="TipoSexo" 
+                                           class="form-control" 
+            							   type="text"
+                                           ng-model="datosFormulario.TipoSexo"
+            							   placeholder="TipoSexo"/>
+                                    <div ng-show="errores.TipoSexo">{{errores.TipoSexo}}</div>
+                                </div>
+                            </div>				<div class="row">
+                                <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
+                                    <label for="idTipo">idTipo</label>
+                                    <input id="idTipo" 
+                                           class="form-control" 
+            							   type="text"
+                                           ng-model="datosFormulario.idTipo"
+            							   placeholder="idTipo"/>
+                                    <div ng-show="errores.idTipo">{{errores.idTipo}}</div>
+                                </div>
+                            </div> 
+			
+			<div class="btn-group">
+				<button type="button" class="btn btn-default" ng-click="guardar()" ng-show="nuevoRegistro">Guardar</button>
+                <button type="button" class="btn btn-default" ng-click="guardar()" ng-show="!nuevoRegistro">Aceptar</button>
+                <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,105 @@
+<div class="btn-group">
+	<button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo Miembro</button>
+	<button type="button" class="btn btn-default" ng-click="cancelar()">Listar Miembro</button>
+</div>
+				
+<div class="panel panel-primary" ng-hide="panelEditar">
+    <div class="panel-heading">Parametrizaci&oacute;n de Miembro</div>
+    <div class="panel-body">
+        <table class="resultados table table-striped">
+            <tr>
+                				<th>
+                                    idInscripcion
+                                </th>				<th>
+                                    fechaNotificacion
+                                </th>				<th>
+                                    motivo
+                                </th>
+								<th>
+				                    targeta
+				                </th>
+				<th>
+                    &nbsp;
+                </th>
+            </tr>
+            <tr ng-repeat="row in lista">
+                		<td class="row">{{row.idInscripcion}}</td>
+                		<td class="row">{{row.fechaNotificacion| date: 'dd/MM/yyyy'}}</td>
+                		<td class="row">{{row.motivo}}</td>
+                
+					<td class="row">{{row.targeta.nombre}}</td>              
+				<td class="row">
+                    <button type="button" class="btn btn-default" ng-click="editar(row)">
+                        <span class="glyphicon glyphicon-pencil"></span>Editar
+                    </button>
+					<button type="button" class="btn btn-default" ng-click="eliminar(row)">
+                        <span class="glyphicon glyphicon-remove"></span>Eliminar
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <br/>
+    </div>
+</div>
+
+<div class="panel panel-primary" ng-show="panelEditar">
+    <div class="panel-heading">Parametrizaci&oacute;n de Miembro</div>
+    <div class="panel-body">
+        <form role="form" id="formularioEditar">
+            				<div class="row">
+                                <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
+                                    <label for="idInscripcion">idInscripcion</label>
+                                    <input id="idInscripcion" 
+                                           class="form-control" 
+            							   type="text"
+                                           ng-model="datosFormulario.idInscripcion"
+            							   placeholder="idInscripcion"/>
+                                    <div ng-show="errores.idInscripcion">{{errores.idInscripcion}}</div>
+                                </div>
+                            </div>				<div class="row">
+                                <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
+                                    <label for="fechaNotificacion">fechaNotificacion</label>
+            						<div class="input-group">
+            	                        <input id="fechaNotificacion" 
+            	                               class="form-control datepicker" 
+            	                               type="text" 
+            	                               ng-model="datosFormulario.fechaNotificacion"/>
+            							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                	</div>
+                                    <script>
+                                                var dp_fechaNotificacion = $('#fechaNotificacion').datepicker({format: 'dd/mm/yyyy'}).on('changeDate', function (ev) {
+                                                    dp_fechaNotificacion.hide();
+                                                }).data('datepicker');
+                                    </script>
+                                    <div ng-show="errores.fechaNotificacion">{{errores.fechaNotificacion}}</div>
+                                </div>
+                            </div>				<div class="row">
+                                <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
+                                    <label for="motivo">motivo</label>
+                                    <input id="motivo" 
+                                           class="form-control" 
+            							   type="text"
+                                           ng-model="datosFormulario.motivo"
+            							   placeholder="motivo"/>
+                                    <div ng-show="errores.motivo">{{errores.motivo}}</div>
+                                </div>
+                            </div> 
+							<div class="row">
+			                    <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
+			                        <label>targeta</label>
+									<select id="targeta" class="form-control" 
+			                            ng-model="datosFormulario.targeta"
+			                            ng-options="option.nombre for option in listaTargeta track by option.id">
+			                    	</select>
+			                        <div ng-show="errores.targeta">{{errores.targeta}}</div>
+			                    </div>
+			                </div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default" ng-click="guardar()" ng-show="nuevoRegistro">Guardar</button>
+                <button type="button" class="btn btn-default" ng-click="guardar()" ng-show="!nuevoRegistro">Aceptar</button>
+                <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
